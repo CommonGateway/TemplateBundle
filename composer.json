@@ -1,5 +1,5 @@
 {
-    "name": "common-gateway/pet-store-bundle",
+    "name": "common-gateway/template-bundle",
     "description": "An example package for creating symfony flex bundles as plugins",
     "type": "symfony-bundle",
     "keywords": [
@@ -9,7 +9,7 @@
         "conduction",
         "symfony",
         "common-gateway-plugin",
-        "pet store"
+        "template"
     ],
     "homepage": "https://commongateway.nl",
     "license": "EUPL-1.2",
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CommonGateway\\PetStoreBundle\\": ""
+            "CommonGateway\\TemplateBundle\\": ""
         }
     },
     "scripts": {
-        "post-package-install": "bin/console common-gateway/pet-store-bundle",
-        "post-package-update": "bin/console common-gateway/pet-store-bundle",
-        "post-package-uninstall": "bin/console common-gateway/pet-store-bundle"
+        "post-package-install": "bin/console common-gateway/template-bundle",
+        "post-package-update": "bin/console common-gateway/template-bundle",
+        "post-package-uninstall": "bin/console common-gateway/template-bundle"
     }
 }

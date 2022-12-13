@@ -1,4 +1,4 @@
-# PetStoreBundle
+# TemplateBundle
 An example repository for creating php symfony flex bundles
 
 
@@ -12,11 +12,11 @@ An example repository for creating php symfony flex bundles
 To execute the following command you will need [Composer](https://getcomposer.org/download/) or a dockerized installation which already has php and composer.
 
 U can install this plugin by installing with command:
-`composer require common-gateway/pet-store-bundle:dev-main` or dockerized: `docker-compose exec php composer require common-gateway/pet-store-bundle:dev-main`
+`composer require common-gateway/template-bundle:dev-main` or dockerized: `docker-compose exec php composer require common-gateway/template-bundle:dev-main`
 in the directory where your composer.json lives.
 
 If you also want to install the schemas as entities you can install them with command:
-`php bin/console commongateway:install common-gateway/pet-store-bundle` or dockerized: `docker-compose exec php bin/console commongateway:install common-gateway/pet-store-bundle`
+`php bin/console commongateway:install common-gateway/template-bundle` or dockerized: `docker-compose exec php bin/console commongateway:install common-gateway/template-bundle`
 
 ### Creating your own bundle
 
@@ -35,9 +35,9 @@ To create your own symfony bundle. You can copy this repository for a fast start
 4. Press the green button `Create repository from template`
 5. Update file names and namespace to your fitting 
    - Open composer.json, and change the name to your fitting. The first word should be the namespace and the second the name of your bundle. Check the autoload field to be set accordingly. Note: this is kebab-case. Also read: [naming your package](https://packagist.org/about#naming-your-package)
-   - Open PetStoreBundle.php and change the Bundle name and namespace. The namespace should be the same as your package name in composer.json but in CamelCase. So common-gateway/pet-store-bundle becomes CommonGateway/TemplateBundle
+   - Open TemplateBundle.php and change the Bundle name and namespace. The namespace should be the same as your package name in composer.json but in CamelCase. So common-gateway/template-bundle becomes CommonGateway/TemplateBundle
    - Rename the /Service and /ActionHandler accordingly (or delete if not used).
-   - Rename the /DependencyInjection/PetStoreExtension.php to your BundleNameExtension.php
+   - Rename the /DependencyInjection/TemplateExtension.php to your BundleNameExtension.php
    - Rename the /Resources/config/services.yaml namespaces  
 
 ##### Adding schemas
@@ -93,7 +93,7 @@ Note: for docker add `docker-compose exec php` before all commands
    - Execute `composer require {full package name}:dev-main`
    - Docker users: restart your containers so symfony can recognize the new Bundle's namespace
 2. Open a php file where you want to use a class.
-   - Add the correct use statement (example `use CommonGateway\PetStoreBundle\Service\PetStoreService;`)
+   - Add the correct use statement (example `use CommonGateway\TemplateBundle\Service\TemplateService;`)
    - U can now use your class!
 
-In the common gateway, if you want to use your code when triggered by an event with a action, make sure the class of the action object is set as the handler name including the namespace. For example if I want to use the PetStoreService I can set the PetStoreHandler as `CommonGateway\PetStoreBundle\ActionHandler\PetStoreHandler`.
+In the common gateway, if you want to use your code when triggered by an event with a action, make sure the class of the action object is set as the handler name including the namespace. For example if I want to use the TemplateService I can set the TemplateHandler as `CommonGateway\TemplateBundle\ActionHandler\TemplateHandler`.

@@ -1,14 +1,14 @@
 <?php
 
-namespace CommonGateway\PetStoreBundle\ActionHandler;
+namespace CommonGateway\TemplateBundle\ActionHandler;
 
-use CommonGateway\PetStoreBundle\Service\PetStoreService;
+use CommonGateway\TemplateBundle\Service\TemplateService;
 
-class PetStoreHandler
+class TemplateHandler
 {
-    private PetStoreService $petStoreService;
+    private TemplateService $petStoreService;
 
-    public function __construct(PetStoreService $petStoreService)
+    public function __construct(TemplateService $petStoreService)
     {
         $this->petStoreService = $petStoreService;
     }
@@ -23,7 +23,7 @@ class PetStoreHandler
         return [
             '$id'         => 'https://example.com/person.schema.json',
             '$schema'     => 'https://json-schema.org/draft/2020-12/schema',
-            'title'       => 'PetStore Action',
+            'title'       => 'Template Action',
             'description' => 'This handler returns a welcoming string',
             'required'    => [],
             'properties'  => [],

@@ -1,7 +1,7 @@
 <?php
 
 // src/Service/InstallationService.php
-namespace CommonGateway\PetStoreBundle\Service;
+namespace CommonGateway\TemplateBundle\Service;
 
 use App\Entity\DashboardCard;
 use App\Entity\Endpoint;
@@ -51,7 +51,7 @@ class InstallationService implements InstallerInterface
     {
 
         // Lets create some genneric dashboard cards
-        $objectsThatShouldHaveCards = ['https://opencatalogi.nl/example.schema.json'];
+        $objectsThatShouldHaveCards = ['https://common-gateway.nl/template-group.schema.json', 'https://common-gateway.nl/template.schema.json'];
 
         foreach ($objectsThatShouldHaveCards as $object) {
             (isset($this->io) ? $this->io->writeln('Looking for a dashboard card for: ' . $object) : '');
@@ -60,14 +60,7 @@ class InstallationService implements InstallerInterface
                 $entity &&
                 !$dashboardCard = $this->entityManager->getRepository('App:DashboardCard')->findOneBy(['entityId' => $entity->getId()])
             ) {
-                $dashboardCard = new DashboardCard();
-                $dashboardCard->setType('schema');
-                $dashboardCard->setEntity('App:Entity');
-                $dashboardCard->setObject('App:Entity');
-                $dashboardCard->setName($entity->getName());
-                $dashboardCard->setDescription($entity->getDescription());
-                $dashboardCard->setEntityId($entity->getId());
-                $dashboardCard->setOrdering(1);
+                $dashboardCard = new DashboardCard($entity);
                 $this->entityManager->persist($dashboardCard);
                 (isset($this->io) ? $this->io->writeln('Dashboard card created') : '');
                 continue;
@@ -76,7 +69,7 @@ class InstallationService implements InstallerInterface
         }
 
         // Let create some endpoints
-        $objectsThatShouldHaveEndpoints = ['https://opencatalogi.nl/example.schema.json'];
+        $objectsThatShouldHaveEndpoints = ['https://common-gateway.nl/template-group.schema.json', 'https://common-gateway.nl/template.schema.json'];
 
         foreach ($objectsThatShouldHaveEndpoints as $object) {
             (isset($this->io) ? $this->io->writeln('Looking for a endpoint for: ' . $object) : '');
