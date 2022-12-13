@@ -98,13 +98,15 @@ class InstallationService implements InstallerInterface
         $endpoint->setEntity($templateGroup);
         $endpoint->setOperationType('collection');
 
+        $this->entityManager->persist($endpoint);
         $endpoint = $endpointRepository->findOneBy(['name' => 'TemplateGroups item']) ?? new Endpoint();
         $endpoint->setName('TemplateGroups item');
         $endpoint->setPathRegex('^(template_groups/[a-z0-9-]{36})$');
         $endpoint->setMethods(["PUT", "GET"]);
         $endpoint->setMethod("POST");
         $endpoint->setEntity($templateGroup);
-        $endpoint->setOperationType('collection');
+        $endpoint->setOperationType('item');
+        $this->entityManager->persist($endpoint);
 
 
         $this->entityManager->flush();
