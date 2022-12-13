@@ -96,7 +96,7 @@ class InstallationService implements InstallerInterface
         $endpoint->setPathRegex('^(template_groups)$');
         $endpoint->setPath(['template_groups']);
         $endpoint->setMethods(["POST", "GET"]);
-        $endpoint->setMethod("POST");
+        $endpoint->setMethod("GET");
         $endpoint->setEntity($templateGroup);
         $endpoint->setOperationType('collection');
         $this->entityManager->persist($endpoint);
@@ -106,7 +106,7 @@ class InstallationService implements InstallerInterface
         $endpoint->setPathRegex('^(template_groups/[a-z0-9-]{36})$');
         $endpoint->setPath(['template_groups', '[a-z0-9-]{36}']);
         $endpoint->setMethods(["PUT", "GET"]);
-        $endpoint->setMethod("POST");
+        $endpoint->setMethod("PUT");
         $endpoint->setEntity($templateGroup);
         $endpoint->setOperationType('item');
         $this->entityManager->persist($endpoint);
