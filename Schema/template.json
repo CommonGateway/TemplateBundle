@@ -59,7 +59,7 @@
       "templateGroups": {
           "type": "array",
           "items": {
-              "$ref": "#/components/schemas/TemplateGroup"
+              "$ref": "https://common-gateway.nl/template-group.schema.json"
           }
       }
   },
