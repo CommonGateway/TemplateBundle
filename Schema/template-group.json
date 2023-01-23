@@ -17,16 +17,13 @@
       "templates": {
           "type": "array",
           "items": {
-              "$ref": "#/components/schemas/Template"
+              "$ref": "https://common-gateway.nl/template.schema.json"
           }
       },
       "application": {
           "type": "string"
       },
       "organization": {
-          "type": "string"
-      },
-      "": {
           "type": "string"
       }
   },
