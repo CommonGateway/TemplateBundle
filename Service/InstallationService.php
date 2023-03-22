@@ -90,6 +90,7 @@ class InstallationService implements InstallerInterface
         $schemaRepository = $this->entityManager->getRepository('App:Entity');
         $endpointRepository = $this->entityManager->getRepository('App:Endpoint');
         $templateGroup = $schemaRepository->findOneBy(['name' => 'TemplateGroup']);
+        $template = $schemaRepository->findOneBy(['name' => 'Template']);
 
         $endpoint = $endpointRepository->findOneBy(['name' => 'TemplateGroups collection']) ?? new Endpoint();
         $endpoint->setName('TemplateGroups collection');
@@ -108,6 +109,26 @@ class InstallationService implements InstallerInterface
         $endpoint->setMethods(["PUT", "GET"]);
         $endpoint->setMethod("PUT");
         $endpoint->setEntity($templateGroup);
+        $endpoint->setOperationType('item');
+        $this->entityManager->persist($endpoint);
+
+        $endpoint = $endpointRepository->findOneBy(['name' => 'Templates collection']) ?? new Endpoint();
+        $endpoint->setName('Templates collection');
+        $endpoint->setPathRegex('^(templates)$');
+        $endpoint->setPath(['templates']);
+        $endpoint->setMethods(["POST", "GET"]);
+        $endpoint->setMethod("GET");
+        $endpoint->setEntity($template);
+        $endpoint->setOperationType('collection');
+        $this->entityManager->persist($endpoint);
+
+        $endpoint = $endpointRepository->findOneBy(['name' => 'Templates item']) ?? new Endpoint();
+        $endpoint->setName('Templates item');
+        $endpoint->setPathRegex('^(templates/[a-z0-9-]{36})$');
+        $endpoint->setPath(['templates', '[a-z0-9-]{36}']);
+        $endpoint->setMethods(["PUT", "GET"]);
+        $endpoint->setMethod("PUT");
+        $endpoint->setEntity($template);
         $endpoint->setOperationType('item');
         $this->entityManager->persist($endpoint);
 
